@@ -1,23 +1,24 @@
+import React from "react";
+import { useState } from "react";
+import { Navbar, People, Planets } from "./components";
 
-function App() {
+const App = () => {
+  const [page, setPage] = useState("planets");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={} className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="w-full max-w-app m-auto flex flex-col gap-4">
+        <h1 className="text-yel text-4xl sm:text-6xl tracking-widest mt-10">
+          Star Wars Info
+        </h1>
+        <Navbar setPage={setPage} />
+        <div className="text-left">
+          {page === "planets" ? <Planets /> : <People />}
+        </div>
+      </div>
+      {/*  */}
+    </>
   );
-}
+};
 
 export default App;
